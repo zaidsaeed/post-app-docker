@@ -3,3 +3,8 @@ services:
   node-app:
     env_file:
       - ./.env
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: zaid
+      MONGO_INITDB_ROOT_PASSWORD: password
