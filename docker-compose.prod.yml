@@ -1,0 +1,9 @@
+version: "3.9" # optional since v1.27.0
+services:
+  node-app:
+    build:
+      context: .
+      args:
+        ENV: PROD
+    ports:
+      - "5000:${PORT}"
