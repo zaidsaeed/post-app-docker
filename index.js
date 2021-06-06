@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const userRoutes = require('./routes/userRoutes')
 
 const app = express()
 const port = process.env.PORT || 2000
@@ -15,8 +16,11 @@ const connectToDB = () => {
 
 connectToDB()
 
+app.use(express.json()) // new
+app.use("/users", userRoutes)
+
 app.get('/', (req, res) => {
-  res.send('Hello Zaid Saeed!')
+  res.send('Hello Zaid aeed!')
 })
 
 app.listen(port, () => {
