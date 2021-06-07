@@ -1,6 +1,8 @@
 const express = require('express')
 const mongoose = require('mongoose')
 const userRoutes = require('./routes/userRoutes')
+const postRoutes = require('./routes/postRoutes')
+const loginRoutes = require('./routes/loginRoutes')
 
 const app = express()
 const port = process.env.PORT || 2000
@@ -18,6 +20,8 @@ connectToDB()
 
 app.use(express.json()) // new
 app.use("/users", userRoutes)
+app.use("/posts", postRoutes)
+app.use("/login", loginRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello Zaid aeed!')
