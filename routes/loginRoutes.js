@@ -12,7 +12,8 @@ router.post("/", async (req, res) => {
     if (foundUser.password !== password) {
         return res.status(401).send({error: "The user entered the wrong password"})
     }
-    return res.send({foundUser})
+    req.session.user = foundUser
+    return res.send({status: 'success'})
 })
 
 module.exports = router

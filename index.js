@@ -9,6 +9,14 @@ const port = process.env.PORT || 2000
 
 const connectionURL = 'mongodb://zaid:password@mongo:27017/?authSource=admin';
 
+const session = require('express-session')
+const redis = require('redis')
+
+let RedisStore = require('connect-redis')(session)
+let redisClient = redis.createClient({host: 'redis', port: 6379})
+
+redisClient.on('error', console.error)
+
 const connectToDB = () => {
   mongoose.connect(connectionURL, {useNewUrlParser: true, useUnifiedTopology: true}).then(res => {console.log('Connection successful')}).catch(err => {
     console.log(err)
@@ -19,6 +27,21 @@ const connectToDB = () => {
 connectToDB()
 
 app.use(express.json()) // new
+
+app.use(
+  session({
+    store: new RedisStore({ client: redisClient }),
+    secret: 'keyboard cat',
+    cookie: {
+      secure: false,
+      httpOnly: true,
+      maxAge: 3000000
+    },
+    resave: false,
+    saveUninitialized: true,
+  })
+)
+  
 app.use("/users", userRoutes)
 app.use("/posts", postRoutes)
 app.use("/login", loginRoutes)

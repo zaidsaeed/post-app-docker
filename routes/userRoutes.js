@@ -8,6 +8,7 @@ router.post("/", async (req, res) => {
 		password: req.body.password,
 	})
 	await user.save()
+	req.session.user = user
 	res.send(user)
 })
 
