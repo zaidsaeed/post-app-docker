@@ -5,7 +5,7 @@ const postRoutes = require('./routes/postRoutes')
 const loginRoutes = require('./routes/loginRoutes')
 
 const app = express()
-const port = process.env.PORT || 2000
+const port = process.env.PORT || 3000
 
 const connectionURL = 'mongodb://zaid:password@mongo:27017/?authSource=admin';
 
@@ -48,6 +48,7 @@ app.use("/login", loginRoutes)
 
 app.get('/', (req, res) => {
   res.send('Hello Zaid aeed!')
+  console.log("This API was hit")
 })
 
 app.listen(port, () => {
