@@ -1,6 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const cors = reqiure('cors')
+const cors = require('cors')
 const userRoutes = require('./routes/userRoutes')
 const postRoutes = require('./routes/postRoutes')
 const loginRoutes = require('./routes/loginRoutes')
