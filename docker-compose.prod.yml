@@ -1,6 +1,13 @@
 version: "3.9" # optional since v1.27.0
 services:
   node-app:
+    deploy:
+      replicas: 8
+      restart_policy:
+        condition: any
+      update_config:
+        parallelism: 1
+        delay: 15s
     build:
       context: .
       args:
