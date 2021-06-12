@@ -37,5 +37,16 @@ docker-compose -f docker-compose.yml -f docker-compose.prod.yml push node-app </
 
 # On prod machine: Pull New Image and Call docker-compose up again </br>
 
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app
-docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml pull node-app </br>
+docker-compose -f docker-compose.yml -f docker-compose.prod.yml up -d </br>
+
+### Docker swarm </br>
+
+Docker swarm is orchestrator. Docker compose just runs a bunch of build scripts. </br>
+docker swarm picks up changes in the image on dockerhub. No need to do the pull steps on the prod machine </br>
+
+docker stack ps myapp </br>
+docker stack deploy -c docker-compose.yml -c docker-compose.prod.yml </br>
+
+This api is running on : </br>
+http://34.222.2.234/ </br>
