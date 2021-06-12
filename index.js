@@ -50,7 +50,7 @@ app.use("/posts", postRoutes)
 app.use("/login", loginRoutes)
 
 app.get('/', (req, res) => {
-  res.send('Hello Zaid aeed!')
+  res.send('Hello Zaid Saeed!!')
   console.log("This API was hit")
 })
 
